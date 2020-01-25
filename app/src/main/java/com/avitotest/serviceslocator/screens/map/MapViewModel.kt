@@ -1,4 +1,4 @@
-package com.avitotest.serviceslocator.screens.main
+package com.avitotest.serviceslocator.screens.map
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -6,9 +6,9 @@ import com.avitotest.serviceslocator.entity.model.Pin
 import com.avitotest.serviceslocator.entity.repository.ServiceRepository
 import com.google.android.gms.maps.model.CameraPosition
 
-class MainViewModel(private val repository: ServiceRepository) : ViewModel() {
+class MapViewModel(private val repository: ServiceRepository) : ViewModel() {
 
-    // список отображаемых точек
+    // список отображаемых сервисов
     var filter = ArrayList<String>()
     set(value) {
         field = value

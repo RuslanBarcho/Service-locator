@@ -1,4 +1,4 @@
-package com.avitotest.serviceslocator.screens.main
+package com.avitotest.serviceslocator.screens.map
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -29,9 +29,9 @@ import com.google.maps.android.ui.IconGenerator
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private val vm: MainViewModel by viewModel()
+    private val vm: MapViewModel by viewModel()
     private var googleMap: GoogleMap? = null
 
     private val moscowCoordinates = LatLng(55.75, 37.6167)
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     // Функция, возвращающая иконку для маркера с буквой сервиса
     private fun getMarkerIcon(pin: Pin): Bitmap = with(IconGenerator(this)) {
-        setContentView(PinMarkerView(this@MainActivity).apply {
+        setContentView(PinMarkerView(this@MapActivity).apply {
             setTitle(pin.service)
         })
         setBackground(ColorDrawable(Color.TRANSPARENT))
