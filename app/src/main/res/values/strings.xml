@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Services locator</string>
+    <string name="title_filter">Сервисы</string>
+    <string name="button_apply">Применить</string>
+    <string name="service_item">Сервис \"%1s\"</string>
+    <string name="title_service_info">Это сервис \"%1s\"</string>
+    <string name="service_info_ok">Отлично!</string>
+</resources>
