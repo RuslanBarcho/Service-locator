@@ -10,6 +10,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_service_info_dialog.*
 
+// Диалог, который вызывается при нажатии на точку на карте
 class ServiceInfoDialog : BottomSheetDialogFragment() {
 
     override fun onStart() {
@@ -36,6 +37,7 @@ class ServiceInfoDialog : BottomSheetDialogFragment() {
         serviceInfoOk.setOnClickListener { dismiss() }
     }
 
+    // Сделано для того, чтобы диалог сразу открывался полностью и пропускал состояние collapsed
     private fun initCoordinatorBehavior() {
         (view?.parent as? View)?.let { parent ->
             try {

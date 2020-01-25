@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.avitotest.serviceslocator.R
 import kotlinx.android.synthetic.main.item_service.view.*
 
+// Адаптер, обеспечивающий изменение состояния фильтра
 class FilterAdapter(
     private val services: ArrayList<String>,
     private val filter: ArrayList<String>
@@ -44,6 +45,7 @@ class FilterAdapter(
         }
     }
 
+    // обработчик нажатия на элемент списка
     fun onServiceTapped(item: String) {
         if (filter.contains(item)) filter.remove(item)
         else filter.add(item)

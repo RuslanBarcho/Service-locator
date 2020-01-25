@@ -8,6 +8,7 @@ import com.google.maps.android.clustering.Cluster
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.clustering.view.DefaultClusterRenderer
 
+// Рендерер элементов карты, чтобы было красиво
 class ClusterRenderer(
     private val context: Context,
     map: GoogleMap?,

@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 
+// Объект с функцией, которая преобразует vector drawable в BitmapDescriptor
 object SvgBitmapDescriptor {
     fun getSvgDescriptor(context: Context?, vectorId: Int): BitmapDescriptor? {
         return if (context != null) {

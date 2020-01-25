@@ -8,6 +8,7 @@ import com.google.android.gms.maps.model.CameraPosition
 
 class MainViewModel(private val repository: ServiceRepository) : ViewModel() {
 
+    // список отображаемых точек
     var filter = ArrayList<String>()
     set(value) {
         field = value
@@ -16,6 +17,7 @@ class MainViewModel(private val repository: ServiceRepository) : ViewModel() {
 
     var lastCameraPosition: CameraPosition? = null
 
+    // сами точки, которые будут отображены на карте
     val pins =  MutableLiveData<List<Pin>>()
 
     init {

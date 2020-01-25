@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.avitotest.serviceslocator.R
 import kotlinx.android.synthetic.main.marker.view.*
 
+// Вьюха для отображения маркера с буквой
 class PinMarkerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null

@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private val vm: MainViewModel by viewModel()
     private var googleMap: GoogleMap? = null
 
+    private val moscowCoordinates = LatLng(55.75, 37.6167)
+    private val defaultMapZoom = 15f
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,6 +44,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment).getMapAsync(this)
     }
 
+    // Функция, возвращающая иконку для маркера с буквой сервиса
     private fun getMarkerIcon(pin: Pin): Bitmap = with(IconGenerator(this)) {
         setContentView(PinMarkerView(this@MainActivity).apply {
             setTitle(pin.service)
@@ -61,12 +65,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
         googleMap = map
 
+        // Восстановление позиции камеры в том случае, если был вызван ранее onSaveInstanceState
         vm.lastCameraPosition?.let {
             googleMap?.moveCamera(CameraUpdateFactory.newCameraPosition(it))
         } ?: run {
-            googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(55.75, 37.6167), 15f))
+            googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(moscowCoordinates, defaultMapZoom))
         }
 
+        // Настройка cluster manager
         val clusterManager = ClusterManager<PinMarker>(this, googleMap).also {
 
             it.renderer = ClusterRenderer(this, googleMap, it)
@@ -90,6 +96,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         googleMap?.setOnCameraIdleListener(clusterManager)
         googleMap?.setOnMarkerClickListener(clusterManager)
 
+        // Обзервер на актуальный список точек
         vm.pins.observe(this, Observer { pins ->
             clusterManager.clearItems()
             for (pin in pins) clusterManager.addItem(getPinMarker(pin))
